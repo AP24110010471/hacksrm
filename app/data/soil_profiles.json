@@ -1,0 +1,58 @@
+{
+    "Black": {
+        "description": "Rich in calcium, magnesium, and potash but poor in nitrogen. High water retention.",
+        "ph_range": [
+            7.0,
+            8.5
+        ],
+        "structure": "Clayey",
+        "base_fertility": {
+            "N": "Low",
+            "P": "Low",
+            "K": "High"
+        },
+        "organic_carbon": "Low-Medium"
+    },
+    "Alluvial": {
+        "description": "Most fertile soil, rich in potash and lime but deficient in nitrogen and humus.",
+        "ph_range": [
+            6.5,
+            8.0
+        ],
+        "structure": "Loamy",
+        "base_fertility": {
+            "N": "Low",
+            "P": "Medium",
+            "K": "High"
+        },
+        "organic_carbon": "Medium"
+    },
+    "Red": {
+        "description": "Rich in iron, porous structure. Deficient in Nitrogen, Humus, Phosphorous, and Lime.",
+        "ph_range": [
+            5.5,
+            7.5
+        ],
+        "structure": "Sandy Loam",
+        "base_fertility": {
+            "N": "Low",
+            "P": "Low",
+            "K": "Medium"
+        },
+        "organic_carbon": "Low"
+    },
+    "Sandy": {
+        "description": "Highly porous, low water retention, low nutrients.",
+        "ph_range": [
+            7.0,
+            9.0
+        ],
+        "structure": "Sandy",
+        "base_fertility": {
+            "N": "Very Low",
+            "P": "Low",
+            "K": "Medium"
+        },
+        "organic_carbon": "Very Low"
+    }
+}

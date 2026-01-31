@@ -1,0 +1,512 @@
+[
+  {
+    "district": "Pune",
+    "state": "Maharashtra",
+    "latitude_range": [
+      18.0,
+      19.5
+    ],
+    "longitude_range": [
+      73.0,
+      75.0
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 32,
+    "avg_tmin": 18,
+    "annual_rainfall_mm": 700,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Nashik",
+    "state": "Maharashtra",
+    "latitude_range": [
+      19.5,
+      20.5
+    ],
+    "longitude_range": [
+      73.0,
+      75.0
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 30,
+    "avg_tmin": 15,
+    "annual_rainfall_mm": 800,
+    "climate_zone": "Sub-Tropical"
+  },
+  {
+    "district": "Ludhiana",
+    "state": "Punjab",
+    "latitude_range": [
+      30.5,
+      31.5
+    ],
+    "longitude_range": [
+      75.5,
+      76.5
+    ],
+    "soil_type": "Alluvial",
+    "avg_tmax": 35,
+    "avg_tmin": 10,
+    "annual_rainfall_mm": 600,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Thanjavur",
+    "state": "Tamil Nadu",
+    "latitude_range": [
+      10.0,
+      11.5
+    ],
+    "longitude_range": [
+      78.5,
+      79.5
+    ],
+    "soil_type": "Alluvial",
+    "avg_tmax": 34,
+    "avg_tmin": 24,
+    "annual_rainfall_mm": 1200,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Jaisalmer",
+    "state": "Rajasthan",
+    "latitude_range": [
+      26.0,
+      28.0
+    ],
+    "longitude_range": [
+      70.0,
+      72.0
+    ],
+    "soil_type": "Sandy",
+    "avg_tmax": 42,
+    "avg_tmin": 10,
+    "annual_rainfall_mm": 200,
+    "climate_zone": "Arid"
+  },
+  {
+    "district": "Visakhapatnam",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      17.5,
+      18.0
+    ],
+    "longitude_range": [
+      83.00,
+      83.50
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 32,
+    "avg_tmin": 24,
+    "annual_rainfall_mm": 1100,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      16.50,
+      16.60
+    ],
+    "longitude_range": [
+      80.60,
+      80.70
+    ],
+    "soil_type": "Alluvial",
+    "avg_tmax": 38,
+    "avg_tmin": 22,
+    "annual_rainfall_mm": 950,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Guntur",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      16.20,
+      16.40
+    ],
+    "longitude_range": [
+      80.40,
+      80.50
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 39,
+    "avg_tmin": 20,
+    "annual_rainfall_mm": 900,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Amaravati",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      16.50,
+      16.60
+    ],
+    "longitude_range": [
+      80.50,
+      80.60
+    ],
+    "soil_type": "Alluvial",
+    "avg_tmax": 38,
+    "avg_tmin": 22,
+    "annual_rainfall_mm": 950,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Tirupati",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      13.60,
+      13.70
+    ],
+    "longitude_range": [
+      79.40,
+      79.50
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 36,
+    "avg_tmin": 20,
+    "annual_rainfall_mm": 900,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Kurnool",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      15.80,
+      15.90
+    ],
+    "longitude_range": [
+      78.00,
+      78.10
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 40,
+    "avg_tmin": 22,
+    "annual_rainfall_mm": 650,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Nellore",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      14.40,
+      14.50
+    ],
+    "longitude_range": [
+      79.90,
+      80.00
+    ],
+    "soil_type": "Sandy",
+    "avg_tmax": 37,
+    "avg_tmin": 24,
+    "annual_rainfall_mm": 1000,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Rajahmundry",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      16.90,
+      17.10
+    ],
+    "longitude_range": [
+      81.70,
+      81.90
+    ],
+    "soil_type": "Alluvial",
+    "avg_tmax": 36,
+    "avg_tmin": 23,
+    "annual_rainfall_mm": 1100,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Kakinada",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      16.90,
+      17.00
+    ],
+    "longitude_range": [
+      82.20,
+      82.30
+    ],
+    "soil_type": "Alluvial",
+    "avg_tmax": 34,
+    "avg_tmin": 24,
+    "annual_rainfall_mm": 1100,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Kadapa",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      14.40,
+      14.50
+    ],
+    "longitude_range": [
+      78.80,
+      78.90
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 39,
+    "avg_tmin": 22,
+    "annual_rainfall_mm": 700,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Anantapur",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      14.60,
+      14.70
+    ],
+    "longitude_range": [
+      77.50,
+      77.70
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 40,
+    "avg_tmin": 22,
+    "annual_rainfall_mm": 550,
+    "climate_zone": "Arid"
+  },
+  {
+    "district": "Araku",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      18.30,
+      18.40
+    ],
+    "longitude_range": [
+      82.80,
+      82.90
+    ],
+    "soil_type": "Laterite",
+    "avg_tmax": 28,
+    "avg_tmin": 10,
+    "annual_rainfall_mm": 1400,
+    "climate_zone": "Sub-Tropical"
+  },
+  {
+    "district": "Lambasingi",
+    "state": "Andhra Pradesh",
+    "latitude_range": [
+      17.80,
+      17.90
+    ],
+    "longitude_range": [
+      82.50,
+      82.60
+    ],
+    "soil_type": "Laterite",
+    "avg_tmax": 25,
+    "avg_tmin": 5,
+    "annual_rainfall_mm": 1300,
+    "climate_zone": "Sub-Tropical"
+  },
+  {
+    "district": "Hyderabad",
+    "state": "Telangana",
+    "latitude_range": [
+      17.30,
+      17.50
+    ],
+    "longitude_range": [
+      78.40,
+      78.60
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 36,
+    "avg_tmin": 18,
+    "annual_rainfall_mm": 800,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Warangal",
+    "state": "Telangana",
+    "latitude_range": [
+      17.90,
+      18.10
+    ],
+    "longitude_range": [
+      79.50,
+      79.70
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 38,
+    "avg_tmin": 20,
+    "annual_rainfall_mm": 900,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Nizamabad",
+    "state": "Telangana",
+    "latitude_range": [
+      18.60,
+      18.70
+    ],
+    "longitude_range": [
+      78.00,
+      78.20
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 39,
+    "avg_tmin": 20,
+    "annual_rainfall_mm": 950,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Karimnagar",
+    "state": "Telangana",
+    "latitude_range": [
+      18.40,
+      18.50
+    ],
+    "longitude_range": [
+      79.10,
+      79.20
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 40,
+    "avg_tmin": 22,
+    "annual_rainfall_mm": 900,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Khammam",
+    "state": "Telangana",
+    "latitude_range": [
+      17.20,
+      17.30
+    ],
+    "longitude_range": [
+      80.10,
+      80.20
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 41,
+    "avg_tmin": 23,
+    "annual_rainfall_mm": 1000,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Ramagundam",
+    "state": "Telangana",
+    "latitude_range": [
+      18.70,
+      18.80
+    ],
+    "longitude_range": [
+      79.40,
+      79.50
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 42,
+    "avg_tmin": 24,
+    "annual_rainfall_mm": 950,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Mahbubnagar",
+    "state": "Telangana",
+    "latitude_range": [
+      16.70,
+      16.80
+    ],
+    "longitude_range": [
+      77.90,
+      78.10
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 38,
+    "avg_tmin": 20,
+    "annual_rainfall_mm": 700,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Nalgonda",
+    "state": "Telangana",
+    "latitude_range": [
+      17.00,
+      17.10
+    ],
+    "longitude_range": [
+      79.20,
+      79.30
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 40,
+    "avg_tmin": 21,
+    "annual_rainfall_mm": 750,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Adilabad",
+    "state": "Telangana",
+    "latitude_range": [
+      19.60,
+      19.70
+    ],
+    "longitude_range": [
+      78.50,
+      78.60
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 41,
+    "avg_tmin": 15,
+    "annual_rainfall_mm": 1050,
+    "climate_zone": "Tropical"
+  },
+  {
+    "district": "Suryapet",
+    "state": "Telangana",
+    "latitude_range": [
+      17.10,
+      17.20
+    ],
+    "longitude_range": [
+      79.60,
+      79.70
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 39,
+    "avg_tmin": 21,
+    "annual_rainfall_mm": 800,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Pochampally",
+    "state": "Telangana",
+    "latitude_range": [
+      17.30,
+      17.40
+    ],
+    "longitude_range": [
+      78.80,
+      78.90
+    ],
+    "soil_type": "Red",
+    "avg_tmax": 37,
+    "avg_tmin": 19,
+    "annual_rainfall_mm": 800,
+    "climate_zone": "Semi-Arid"
+  },
+  {
+    "district": "Nirmal",
+    "state": "Telangana",
+    "latitude_range": [
+      19.00,
+      19.10
+    ],
+    "longitude_range": [
+      78.30,
+      78.40
+    ],
+    "soil_type": "Black",
+    "avg_tmax": 40,
+    "avg_tmin": 18,
+    "annual_rainfall_mm": 950,
+    "climate_zone": "Tropical"
+  }
+]

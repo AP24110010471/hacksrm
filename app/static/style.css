@@ -1,0 +1,268 @@
+:root {
+    --primary: #4CAF50;
+    --primary-dark: #2E7D32;
+    --accent: #FF9800;
+    /* Orange accent */
+    --bg-color: #f0f4f8;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Live Background with Ken Burns Effect */
+.live-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('/static/farm_light.png') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+    animation: kenBurns 40s ease-in-out infinite alternate;
+    opacity: 0.9;
+    /* Slight transparency to blend with white background if needed */
+}
+
+@keyframes kenBurns {
+    0% {
+        transform: scale(1.0);
+    }
+
+    100% {
+        transform: scale(1.2) translate(-20px, -10px);
+    }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.card {
+    background: var(--glass-bg);
+    border-radius: 16px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--primary-dark);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 15px;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.hidden {
+    display: none;
+}
+
+.result-box {
+    background: #f8f9fa;
+    border-left: 4px solid var(--primary);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+
+.error-msg {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    margin: 5px 0 0 0;
+    width: 100%;
+}
+
+/* Crop Results Grid */
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.crop-card {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.crop-card:hover {
+    border-color: var(--primary);
+    background: #f0fff4;
+}
+
+.crop-card.selected {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary-dark);
+}
+
+.crop-score {
+    float: right;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* Auth Pages */
+.auth-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: transparent;
+    margin: 0;
+}
+
+.auth-container {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.auth-form {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+    /* Fix padding issue */
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-footer a {
+    color: var(--primary-dark);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ai-box {
+    margin-top: 20px;
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #bbdefb;
+}
+
+.ai-box h4 {
+    margin-top: 0;
+    color: #1976d2;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+th {
+    background: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+tr:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.visualizer-screen {
+    transition: all 0.3s ease;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Geo-Intelligent Advisory</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="auth-body">
+    <!-- Live Background Layer -->
+    <div class="live-bg" id="bgLayer"></div>
+    <script>
+        // User Selected Natural Background
+        document.getElementById('bgLayer').style.backgroundImage = "url('/static/custom_natural.jpg')";
+    </script>
+    <div class="auth-container">
+        <h1>🌱 Farmer Login</h1>
+        <p>Access your personalized crop advisory dashboard</p>
+
+        <form action="/login" method="POST" class="auth-form">
+            <div class="form-group">
+                <label>Phone Number / User ID</label>
+                <input type="text" name="username" required placeholder="Enter User ID">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required placeholder="Enter Password">
+            </div>
+
+            {% if error %}
+            <p class="error-msg" style="text-align:center;">{{ error }}</p>
+            {% endif %}
+
+            <button type="submit" class="btn-primary full-width">Login</button>
+        </form>
+
+        <div class="auth-footer">
+            New User? <a href="/register">Register Here</a>
+        </div>
+    </div>
+</body>
+
+</html>

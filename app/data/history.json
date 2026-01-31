@@ -1,0 +1,18 @@
+{
+  "manikanta": [
+    {
+      "date": "2026-01-31",
+      "crop": "Sugarcane",
+      "district": "Guntur",
+      "yield_est": "360 Quintals (High Yield (Excellent Soil Match))",
+      "year": "2025"
+    },
+    {
+      "date": "2026-01-31",
+      "crop": "Sugarcane",
+      "district": "Guntur",
+      "yield_est": "",
+      "year": "2025"
+    }
+  ]
+}

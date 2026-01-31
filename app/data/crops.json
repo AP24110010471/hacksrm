@@ -1,0 +1,111 @@
+[
+    {
+        "name": "Cotton",
+        "season": "Kharif",
+        "suitable_soils": [
+            "Black",
+            "Alluvial",
+            "Red"
+        ],
+        "min_rainfall": 500,
+        "max_rainfall": 1000,
+        "min_temp": 21,
+        "max_temp": 35,
+        "duration_days": 160,
+        "seed_rate_kg_per_acre": 2,
+        "npk_kg_per_acre": {
+            "N": 40,
+            "P": 20,
+            "K": 20
+        },
+        "water_req_mm": 700,
+        "description": "Fiber crop requiring warm climate and clear sky during flowering."
+    },
+    {
+        "name": "Wheat",
+        "season": "Rabi",
+        "suitable_soils": [
+            "Alluvial",
+            "Black",
+            "Loamy"
+        ],
+        "min_rainfall": 200,
+        "max_rainfall": 600,
+        "min_temp": 10,
+        "max_temp": 25,
+        "duration_days": 140,
+        "seed_rate_kg_per_acre": 40,
+        "npk_kg_per_acre": {
+            "N": 50,
+            "P": 25,
+            "K": 15
+        },
+        "water_req_mm": 450,
+        "description": "Staple food crop. Requires cool growing season and bright sunshine at ripening."
+    },
+    {
+        "name": "Rice (Paddy)",
+        "season": "Kharif",
+        "suitable_soils": [
+            "Alluvial",
+            "Clayey",
+            "Black"
+        ],
+        "min_rainfall": 1000,
+        "max_rainfall": 3000,
+        "min_temp": 20,
+        "max_temp": 38,
+        "duration_days": 120,
+        "seed_rate_kg_per_acre": 25,
+        "npk_kg_per_acre": {
+            "N": 40,
+            "P": 20,
+            "K": 20
+        },
+        "water_req_mm": 1200,
+        "description": "Semi-aquatic crop. Needs standing water."
+    },
+    {
+        "name": "Bajra (Pearl Millet)",
+        "season": "Kharif",
+        "suitable_soils": [
+            "Sandy",
+            "Red",
+            "Black"
+        ],
+        "min_rainfall": 200,
+        "max_rainfall": 600,
+        "min_temp": 25,
+        "max_temp": 35,
+        "duration_days": 90,
+        "seed_rate_kg_per_acre": 1.5,
+        "npk_kg_per_acre": {
+            "N": 30,
+            "P": 15,
+            "K": 0
+        },
+        "water_req_mm": 350,
+        "description": "Hardy crop suitable for arid zones."
+    },
+    {
+        "name": "Sugarcane",
+        "season": "Annual",
+        "suitable_soils": [
+            "Alluvial",
+            "Black"
+        ],
+        "min_rainfall": 1000,
+        "max_rainfall": 2500,
+        "min_temp": 20,
+        "max_temp": 35,
+        "duration_days": 365,
+        "seed_rate_kg_per_acre": 2500,
+        "npk_kg_per_acre": {
+            "N": 100,
+            "P": 50,
+            "K": 50
+        },
+        "water_req_mm": 2000,
+        "description": "Cash crop requiring high water and nutrients."
+    }
+]

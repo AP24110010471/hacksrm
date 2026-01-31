@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Geo-Intelligent Advisory</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="auth-body">
+    <!-- Live Background Layer -->
+    <div class="live-bg" id="bgLayer"></div>
+    <script>
+        // User Selected Natural Background
+        document.getElementById('bgLayer').style.backgroundImage = "url('/static/custom_natural.jpg')";
+    </script>
+    <div class="auth-container">
+        <h1>📝 Farmer Registration</h1>
+        <p>Join the community for better yields</p>
+
+        <form action="/register" method="POST" class="auth-form">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="fullname" required placeholder="Your Name">
+            </div>
+            <div class="form-group">
+                <label>Phone Number (User ID)</label>
+                <input type="text" name="username" required placeholder="10-digit Mobile Number">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" required placeholder="Set a Password">
+            </div>
+
+            {% if error %}
+            <p class="error-msg" style="text-align:center;">{{ error }}</p>
+            {% endif %}
+
+            <button type="submit" class="btn-primary full-width">Register</button>
+        </form>
+
+        <div class="auth-footer">
+            Already have an account? <a href="/login">Login Here</a>
+        </div>
+    </div>
+</body>
+
+</html>
