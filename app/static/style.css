@@ -99,10 +99,11 @@ header {
     position: fixed;
     /* Fixed to cover scrollable pages too */
     inset: 0;
-    background: rgba(255, 255, 255, 0.2);
-    /* Reduced opacity for better visibility */
-    backdrop-filter: blur(8px);
-    z-index: 0;
+    /* Use a simple overlay color instead of heavy blur */
+    background: rgba(255, 255, 255, 0.4);
+    /* backdrop-filter: blur(8px); REMOVED to fix whole screen blur issue */
+    z-index: -1;
+    /* Strictly behind everything */
     pointer-events: none;
     /* Let clicks pass through */
 }
