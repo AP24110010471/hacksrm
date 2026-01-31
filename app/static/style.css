@@ -46,6 +46,9 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    position: relative;
+    z-index: 2;
+    /* Ensure content is above background */
 }
 
 header {
@@ -82,19 +85,26 @@ header {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: url('/static/farm_bg_blur.jpg'), linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    /* Use farm_live.png which exists */
+    background: url('/static/farm_live.png'), linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
     background-size: cover;
     background-position: center;
     position: relative;
+    overflow: hidden;
+    /* Prevent scrolling if bg slightly off */
 }
 
 /* Optional Overlay */
 .live-bg {
-    position: absolute;
+    position: fixed;
+    /* Fixed to cover scrollable pages too */
     inset: 0;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    /* Reduced opacity for better visibility */
     backdrop-filter: blur(8px);
     z-index: 0;
+    pointer-events: none;
+    /* Let clicks pass through */
 }
 
 .auth-wrapper {
