@@ -446,6 +446,14 @@ td {
         padding: 1.5rem;
     }
 
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
+
     .dashboard-grid {
         grid-template-columns: 1fr;
     }

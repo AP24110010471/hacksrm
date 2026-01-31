@@ -23,10 +23,23 @@
                 <p data-i18n="app_subtitle">Intelligent Farming Assistant</p>
             </div>
 
+            <!-- Navigation Menu -->
+            <nav class="nav-links">
+                <a href="#" class="nav-item active">
+                    <ion-icon name="home-outline"></ion-icon> <span data-i18n="home">Home</span>
+                </a>
+                <a href="#step1" class="nav-item">
+                    <ion-icon name="grid-outline"></ion-icon> <span data-i18n="dashboard">Dashboard</span>
+                </a>
+                <span onclick="toggleSettings()" class="nav-item">
+                    <ion-icon name="settings-outline"></ion-icon> <span data-i18n="settings">Settings</span>
+                </span>
+            </nav>
+
             <div class="user-actions" style="display:flex; align-items:center; gap:1rem;">
-                <!-- Settings Trigger -->
-                <button onclick="toggleSettings()" class="btn-secondary"
-                    style="border:none; background:transparent; font-size:1.5rem; cursor:pointer;">
+                <!-- Mobile Settings Trigger (visible when nav hidden) -->
+                <button onclick="toggleSettings()" class="btn-secondary mobile-only"
+                    style="border:none; background:transparent; font-size:1.5rem; cursor:pointer; display:none;">
                     <ion-icon name="settings-outline"></ion-icon>
                 </button>
 

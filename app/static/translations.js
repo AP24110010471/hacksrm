@@ -2,6 +2,8 @@ const translations = {
     "en": {
         "app_title": "AgriSmart",
         "app_subtitle": "Intelligent Farming Assistant",
+        "home": "Home",
+        "dashboard": "Dashboard",
         "farmer_id": "Farmer ID",
         "logout": "Logout",
         "location_step": "1. Location",
@@ -47,6 +49,8 @@ const translations = {
     "hi": {
         "app_title": "एग्रीस्मार्ट",
         "app_subtitle": "बुद्धिमान कृषि सहायक",
+        "home": "होम",
+        "dashboard": "डैशबोर्ड",
         "farmer_id": "किसान आईडी",
         "logout": "लॉग आउट",
         "location_step": "1. स्थान",
@@ -92,6 +96,8 @@ const translations = {
     "te": {
         "app_title": "అగ్రిస్మార్ట్",
         "app_subtitle": "తెలివైన వ్యవసాయ సహాయకుడు",
+        "home": "హోమ్",
+        "dashboard": "డ్యాష్‌బోర్డ్",
         "farmer_id": "రైతు ID",
         "logout": "లాగౌట్",
         "location_step": "1. ప్రాంతం",
