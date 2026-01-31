@@ -89,6 +89,7 @@ async function recommendCrops() {
                     <span class="crop-score">${rec.score}%</span>
                 </div>
                 <small>${rec.reasons[0]}</small>
+                <button class="btn-secondary" style="margin-top:0.5rem; font-size:0.8rem; padding:0.3rem 0.8rem; width:100%;">Select</button>
             `;
             card.onclick = () => selectCrop(rec.crop.name, card);
             resultGrid.appendChild(card);
@@ -118,8 +119,12 @@ async function selectCrop(cropName, cardElement) {
     document.getElementById('marketSection').classList.remove('hidden');
     fetchMarketPrice(cropName);
 
-    document.getElementById('step3').classList.remove('hidden');
+    const step3 = document.getElementById('step3');
+    step3.classList.remove('hidden');
     document.getElementById('calcResult').classList.add('hidden');
+
+    // Smooth scroll to next step so user sees the 'Get Resources' button
+    step3.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 async function fetchMarketPrice(cropName) {
