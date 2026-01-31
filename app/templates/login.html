@@ -4,41 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Geo-Intelligent Advisory</title>
-    <link rel="stylesheet" href="/static/style.css?v=2">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Login - AgriSmart</title>
+    <link rel="stylesheet" href="/static/style.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body class="auth-body">
-    <!-- Live Background Layer -->
-    <div class="live-bg" id="bgLayer"></div>
-    <script>
-        // User Selected Natural Background
-        document.getElementById('bgLayer').style.backgroundImage = "url('/static/custom_natural.jpg')";
-    </script>
-    <div class="auth-container">
-        <h1>🌱 Farmer Login</h1>
-        <p>Access your personalized crop advisory dashboard</p>
+    <!-- Background Layer -->
+    <div class="live-bg"></div>
 
-        <form action="/login" method="POST" class="auth-form">
-            <div class="form-group">
-                <label>Phone Number / User ID</label>
-                <input type="text" name="username" required placeholder="Enter User ID">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" required placeholder="Enter Password">
+    <div class="auth-wrapper">
+        <div class="brand-header">
+            <div class="logo-icon">🌱</div>
+            <h1>AgriSmart</h1>
+        </div>
+
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>Welcome Back</h2>
+                <p>Login to your crop intelligence dashboard</p>
             </div>
 
-            {% if error %}
-            <p class="error-msg" style="text-align:center;">{{ error }}</p>
-            {% endif %}
+            <form action="/login" method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Phone / User ID</label>
+                    <div class="input-wrapper">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <input type="text" id="username" name="username" required placeholder="Ex: 9876543210">
+                    </div>
+                </div>
 
-            <button type="submit" class="btn-primary full-width">Login</button>
-        </form>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" id="password" name="password" required placeholder="••••••••">
+                    </div>
+                </div>
 
-        <div class="auth-footer">
-            New User? <a href="/register">Register Here</a>
+                {% if error %}
+                <div class="error-banner">
+                    <ion-icon name="alert-circle"></ion-icon>
+                    <span>{{ error }}</span>
+                </div>
+                {% endif %}
+
+                <button type="submit" class="btn-primary full-width">
+                    <span>Sign In Securely</span>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+            <div class="social-actions">
+                <button class="btn-social google">
+                    <ion-icon name="logo-google"></ion-icon> Google
+                </button>
+                <button class="btn-social phone">
+                    <ion-icon name="call-outline"></ion-icon> OTP Login
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                New User? <a href="/register">Create an Account</a>
+            </div>
         </div>
     </div>
 </body>
