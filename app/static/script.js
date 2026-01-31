@@ -189,7 +189,8 @@ async function calculateResources() {
             body: JSON.stringify({
                 crop_name: currentCropName,
                 area: areaVal,
-                soil_type: currentLocData.location.soil_type
+                soil_type: currentLocData.location.soil_type,
+                location_details: currentLocData.location // Sending full details for AI Engine
             })
         });
 

@@ -66,16 +66,20 @@ def calculate():
     schedule = calc_service.get_application_schedule(crop_name)
     
     # 3. Add explanation
-    # Construct explanations manually since previously logic was different
-    # Mocking explain_calculation which doesn't exist in XAIEngine yet, reverting to separate explanations
+    # Construct comprehensive AI Insight
+    location_details = data.get('location_details', {})
     
-    mock_location = {"soil_type": soil_type}
-    fert_explanation = xai_service.explain_fertilizer(resources)
+    # Get explanations
+    why_crop = xai_service.explain_recommendation(soil_profile, crop_details, location_details)
+    why_fert = xai_service.explain_fertilizer(resources)
+    
+    # Combine with a visual separator
+    full_explanation = f"{why_crop}\n\n**Nutrient Plan**:\n{why_fert}"
     
     return jsonify({
         "resources": resources,
         "schedule": schedule,
-        "explanation": fert_explanation
+        "explanation": full_explanation
     })
 
 @app.route('/get-disease-risk', methods=['POST'])
