@@ -362,7 +362,89 @@ async function runDiseaseDiagnosis() {
     }
 }
 
+// --- Settings & UI Logic ---
+
+function toggleSettings() {
+    const modal = document.getElementById('settingsModal');
+    modal.classList.toggle('active');
+}
+
+function closeSettings(e) {
+    if (e.target.id === 'settingsModal') {
+        document.getElementById('settingsModal').classList.remove('active');
+    }
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+    // Update button text
+    const btn = document.getElementById('themeBtn');
+    if (isDark) {
+        btn.innerHTML = '<ion-icon name="sunny-outline"></ion-icon> <span data-i18n="light_mode">Light Mode</span>';
+    } else {
+        btn.innerHTML = '<ion-icon name="moon-outline"></ion-icon> <span data-i18n="dark_mode">Dark Mode</span>';
+    }
+    // Re-apply language to new button text
+    const currentLang = localStorage.getItem('language') || 'en';
+    changeLanguage(currentLang);
+}
+
+function changeLanguage(lang) {
+    localStorage.setItem('language', lang);
+    document.getElementById('languageSelect').value = lang;
+
+    const dict = translations[lang] || translations['en'];
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+            el.textContent = dict[key];
+        }
+    });
+
+    // Translate dynamic elements if needed
+    // Example: Placeholders could be handled here if added to dictionary
+}
+
+// --- 3D Tilt Effect ---
+function initTiltEffect() {
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    });
+}
+
 // Initial Load
 document.addEventListener('DOMContentLoaded', () => {
     loadHistory();
+    initTiltEffect();
+
+    // Load Saved Settings
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        toggleTheme(); // This will switch to dark
+    }
+
+    const savedLang = localStorage.getItem('language') || 'en';
+    changeLanguage(savedLang);
 });

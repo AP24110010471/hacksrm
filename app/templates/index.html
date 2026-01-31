@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Geo-Intelligent Advisory</title>
-    <link rel="stylesheet" href="/static/style.css?v=2">
+    <title>Dashboard - AgriSmart</title>
+    <link rel="stylesheet" href="/static/style.css?v=4">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Translations -->
+    <script src="/static/translations.js"></script>
 </head>
 
 <body>
@@ -17,29 +19,37 @@
         <!-- Modern Header -->
         <header>
             <div class="brand-area">
-                <h1><span style="font-size:1.5em">🌱</span> AgriSmart</h1>
-                <p>Intelligent Farming Assistant</p>
+                <h1><span style="font-size:1.5em">🌱</span> <span data-i18n="app_title">AgriSmart</span></h1>
+                <p data-i18n="app_subtitle">Intelligent Farming Assistant</p>
             </div>
 
-            <div class="user-actions" style="display:flex; align-items:center; gap:1.5rem;">
+            <div class="user-actions" style="display:flex; align-items:center; gap:1rem;">
+                <!-- Settings Trigger -->
+                <button onclick="toggleSettings()" class="btn-secondary"
+                    style="border:none; background:transparent; font-size:1.5rem; cursor:pointer;">
+                    <ion-icon name="settings-outline"></ion-icon>
+                </button>
+
                 <div style="text-align:right;">
                     <strong style="display:block; color:var(--text-main);">{{ user }}</strong>
-                    <span style="font-size:0.8rem; color:var(--text-muted);">Farmer ID</span>
+                    <span style="font-size:0.8rem; color:var(--text-muted);" data-i18n="farmer_id">Farmer ID</span>
                 </div>
                 <a href="/logout" class="btn-secondary" style="color:#d32f2f; border-color:#ffcdd2;">
-                    <ion-icon name="log-out-outline" style="vertical-align:middle;"></ion-icon> Logout
+                    <ion-icon name="log-out-outline" style="vertical-align:middle;"></ion-icon> <span
+                        data-i18n="logout">Logout</span>
                 </a>
             </div>
         </header>
 
         <main class="dashboard-grid">
 
-            <!-- Step 1: Location & Weather Widget -->
+            <!-- Step 1: Location -->
             <section id="step1" class="card" style="grid-column: span 1;">
-                <h2><ion-icon name="location-outline"></ion-icon> 1. Location</h2>
+                <h2><ion-icon name="location-outline"></ion-icon> <span data-i18n="location_step">1. Location</span>
+                </h2>
                 <div class="input-group">
                     <div>
-                        <label>District</label>
+                        <label data-i18n="district_label">District</label>
                         <select id="districtInput">
                             <option value="">Select District</option>
                             <option value="Guntur">Guntur</option>
@@ -50,10 +60,10 @@
                         </select>
                     </div>
                     <div>
-                        <label>Village (Optional)</label>
+                        <label data-i18n="village_label">Village (Optional)</label>
                         <input type="text" id="villageInput" placeholder="Ex: Mangalagiri">
                     </div>
-                    <button onclick="analyzeLocation()" class="btn-primary full-width">
+                    <button onclick="analyzeLocation()" class="btn-primary full-width" data-i18n="analyze_btn">
                         Analyze Location
                     </button>
                     <p id="locationError" class="error-msg"></p>
@@ -65,7 +75,7 @@
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <div>
                                 <h1 id="tempDisplay" style="margin:0; font-size:2.5rem;">--°C</h1>
-                                <p id="weatherCondition" style="margin:0;">Loading...</p>
+                                <p id="weatherCondition" style="margin:0;" data-i18n="loading">Loading...</p>
                             </div>
                             <div style="font-size:3rem;">🌥️</div>
                         </div>
@@ -77,109 +87,112 @@
                     </div>
 
                     <div class="result-box">
-                        <p><strong>📍 Detected:</strong> <span id="detectedLoc">--</span></p>
-                        <p><strong>🟤 Soil:</strong> <span id="soilType">--</span></p>
-                        <p><strong>🌍 Zone:</strong> <span id="climateZone">--</span></p>
+                        <p><strong>📍 <span data-i18n="detected_loc">Detected</span>:</strong> <span
+                                id="detectedLoc">--</span></p>
+                        <p><strong>🟤 <span data-i18n="soil_type">Soil</span>:</strong> <span id="soilType">--</span>
+                        </p>
+                        <p><strong>🌍 <span data-i18n="zone">Zone</span>:</strong> <span id="climateZone">--</span></p>
                     </div>
                 </div>
             </section>
 
-            <!-- Step 2: Crop Intelligence Center -->
+            <!-- Step 2: Crops -->
             <section id="step2" class="card hidden" style="grid-column: span 2;">
-                <h2><ion-icon name="leaf-outline"></ion-icon> 2. Smart Crop Recommendation</h2>
+                <h2><ion-icon name="leaf-outline"></ion-icon> <span data-i18n="crop_step">2. Smart Crop
+                        Recommendation</span></h2>
                 <div style="display:flex; gap:1rem; align-items:flex-end; margin-bottom:1.5rem;">
                     <div style="flex:1;">
-                        <label>Select Season</label>
+                        <label data-i18n="season_label">Select Season</label>
                         <select id="seasonInput">
                             <option value="Kharif">Kharif (Monsoon)</option>
                             <option value="Rabi">Rabi (Winter)</option>
                             <option value="Zaid">Zaid (Summer)</option>
                         </select>
                     </div>
-                    <button onclick="recommendCrops()" class="btn-primary" style="flex:2;">Find Best Crops</button>
+                    <button onclick="recommendCrops()" class="btn-primary" style="flex:2;"
+                        data-i18n="find_crops_btn">Find Best Crops</button>
                 </div>
 
-                <div id="cropResult" class="crop-grid hidden">
-                    <!-- Dynamic Crops -->
-                </div>
+                <div id="cropResult" class="crop-grid hidden"></div>
             </section>
 
-            <!-- Live Market Widget -->
+            <!-- Market -->
             <section id="marketSection" class="card hidden" style="background:#E8F5E9; border-color:#C8E6C9;">
-                <h2><ion-icon name="trending-up-outline"></ion-icon> Market Pulse</h2>
+                <h2><ion-icon name="trending-up-outline"></ion-icon> <span data-i18n="market_pulse">Market Pulse</span>
+                </h2>
                 <div>
-                    <p style="margin:0; color:var(--text-muted);">Current Price for <strong
-                            id="priceCropName">--</strong></p>
+                    <p style="margin:0; color:var(--text-muted);"><span data-i18n="current_price">Current Price
+                            for</span> <strong id="priceCropName">--</strong></p>
                     <h1 id="priceValue" style="margin:0.5rem 0; color:var(--primary-dark);">₹ --</h1>
                     <div id="priceTrend" style="font-weight:600; color:#F9A825;">--</div>
-                    <small id="marketLoc">Updated just now</small>
+                    <small id="marketLoc" data-i18n="updated_now">Updated just now</small>
                 </div>
             </section>
 
-            <!-- Step 3: Calculator & Planner -->
+            <!-- Step 3: Planner -->
             <section id="step3" class="card hidden" style="grid-column: span 3;">
                 <div style="display:flex; gap:2rem; flex-wrap:wrap;">
 
-                    <!-- Left: Inputs -->
                     <div style="flex:1; min-width:300px;">
-                        <h2><ion-icon name="calculator-outline"></ion-icon> 3. Planner & Yield</h2>
+                        <h2><ion-icon name="calculator-outline"></ion-icon> <span data-i18n="planner_step">3. Planner &
+                                Yield</span></h2>
                         <div class="result-box" style="margin-top:0; margin-bottom:1.5rem;">
-                            <p>Plan for: <strong id="selectedCropName" style="font-size:1.2rem;">--</strong></p>
+                            <p><span data-i18n="plan_for">Plan for:</span> <strong id="selectedCropName"
+                                    style="font-size:1.2rem;">--</strong></p>
                         </div>
 
                         <div class="input-group">
-                            <label>Land Area (Acres)</label>
+                            <label data-i18n="land_area">Land Area (Acres)</label>
                             <input type="number" id="areaInput" value="1" min="0.1" step="0.1"
                                 onchange="calculateYield()">
                         </div>
 
                         <div style="display:flex; gap:1rem; margin-top:1rem;">
-                            <button onclick="calculateYield()" class="btn-secondary" style="flex:1;">Est. Yield</button>
-                            <button onclick="calculateResources()" class="btn-primary" style="flex:1;">Get
-                                Resources</button>
+                            <button onclick="calculateYield()" class="btn-secondary" style="flex:1;"
+                                data-i18n="est_yield_btn">Est. Yield</button>
+                            <button onclick="calculateResources()" class="btn-primary" style="flex:1;"
+                                data-i18n="get_resources_btn">Get Resources</button>
                         </div>
 
                         <div id="yieldResult" class="hidden"
                             style="margin-top: 1rem; padding:1rem; background:#FFF3E0; border-radius:8px; color:#E65100; font-weight:bold; text-align:center;">
-                            Expected Yield: <span id="yieldValue"></span>
+                            <span data-i18n="expected_yield">Expected Yield:</span> <span id="yieldValue"></span>
                         </div>
                     </div>
 
-                    <!-- Right: Results -->
                     <div id="calcResult" class="hidden"
                         style="flex:2; min-width:300px; border-left:1px solid #EEE; padding-left:2rem;">
-                        <h3>📦 Resource Plan</h3>
+                        <h3>📦 <span data-i18n="resource_plan">Resource Plan</span></h3>
                         <div id="resourceOutput"
                             style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;"></div>
 
-                        <h3>📅 Schedule</h3>
+                        <h3>📅 <span data-i18n="schedule">Schedule</span></h3>
                         <div id="scheduleOutput"></div>
 
-                        <!-- AI Insight -->
                         <div class="ai-box"
                             style="background:#E3F2FD; padding:1rem; border-radius:8px; margin-top:1.5rem; display:flex; gap:1rem;">
                             <div style="font-size:2rem;">🤖</div>
                             <div>
-                                <h4 style="margin:0 0 0.5rem 0; color:#1565C0;">AI Insight</h4>
+                                <h4 style="margin:0 0 0.5rem 0; color:#1565C0;" data-i18n="ai_insight">AI Insight</h4>
                                 <p id="aiExplanation" style="margin:0; font-size:0.9rem; color:#0D47A1;"></p>
                             </div>
                         </div>
 
                         <button onclick="addToHistory()" class="btn-primary full-width"
                             style="margin-top:1rem; background:#5E35B1;">
-                            <ion-icon name="save-outline"></ion-icon> Save Plan
+                            <ion-icon name="save-outline"></ion-icon> <span data-i18n="save_plan">Save Plan</span>
                         </button>
                     </div>
 
                 </div>
             </section>
 
-            <!-- Disease & History row -->
             <section id="diseaseSection" class="card" style="grid-column: span 1;">
-                <h2><ion-icon name="medkit-outline"></ion-icon> Crop Doctor</h2>
-                <p style="font-size:0.9rem;">Check <strong id="diagnosisCropName">Selected Crop</strong> for risks.</p>
+                <h2><ion-icon name="medkit-outline"></ion-icon> <span data-i18n="crop_doctor">Crop Doctor</span></h2>
+                <p style="font-size:0.9rem;"><span data-i18n="check_risks">Check risks for</span> <strong
+                        id="diagnosisCropName">--</strong>.</p>
                 <button onclick="runDiseaseDiagnosis()" class="btn-secondary full-width"
-                    style="color:#d32f2f; border-color:#ef9a9a;">
+                    style="color:#d32f2f; border-color:#ef9a9a;" data-i18n="analyze_risk_btn">
                     Analyze Risk
                 </button>
                 <div id="diseaseVisualizer" class="hidden" style="margin-top:1rem;"></div>
@@ -187,18 +200,18 @@
 
             <section id="historySection" class="card" style="grid-column: span 2;">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <h2><ion-icon name="time-outline"></ion-icon> History</h2>
+                    <h2><ion-icon name="time-outline"></ion-icon> <span data-i18n="history">History</span></h2>
                     <button onclick="loadHistory()" class="btn-secondary"
-                        style="padding:0.4rem 0.8rem; font-size:0.8rem;">Refresh</button>
+                        style="padding:0.4rem 0.8rem; font-size:0.8rem;" data-i18n="refresh">Refresh</button>
                 </div>
                 <div class="table-container">
                     <table id="historyTable">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Crop</th>
-                                <th>Loc</th>
-                                <th>Yield</th>
+                                <th data-i18n="date">Date</th>
+                                <th data-i18n="crop">Crop</th>
+                                <th data-i18n="loc">Loc</th>
+                                <th data-i18n="yield">Yield</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -209,12 +222,37 @@
         </main>
     </div>
 
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="settingsModal" onclick="closeSettings(event)">
+        <div class="settings-modal" onclick="event.stopPropagation()">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                <h2 style="margin:0;" data-i18n="settings">Settings</h2>
+                <button onclick="toggleSettings()"
+                    style="border:none; bg:transparent; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+
+            <div class="setting-item">
+                <span data-i18n="theme">Theme</span>
+                <button onclick="toggleTheme()" id="themeBtn" class="btn-secondary">
+                    <ion-icon name="moon-outline"></ion-icon> <span data-i18n="dark_mode">Dark Mode</span>
+                </button>
+            </div>
+
+            <div class="setting-item">
+                <span data-i18n="language">Language</span>
+                <select id="languageSelect" onchange="changeLanguage(this.value)"
+                    style="padding:0.5rem; border-radius:6px; border:1px solid #ddd;">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
     <script src="/static/script.js"></script>
     <script>
-        // Simple View Helper for Grid Span management
-        function adjustGrid() {
-            // Optional JS for advanced responsiveness if CSS Grid isn't enough
-        }
+        // Init logic for language and theme is in script.js now
     </script>
 </body>
 

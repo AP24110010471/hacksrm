@@ -454,3 +454,163 @@ td {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- 3D & Motion Effects --- */
+.card {
+    /* Existing card styles plus: */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    will-change: transform;
+}
+
+.card:hover {
+    /* Simple tilt effect on hover if JS tilt isn't active */
+    transform: translateY(-5px) rotateX(2deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Entry Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dashboard-grid>section {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    /* Starte hidden */
+}
+
+/* Stagger animations */
+.dashboard-grid>section:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.dashboard-grid>section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dashboard-grid>section:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.dashboard-grid>section:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.dashboard-grid>section:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.dashboard-grid>section:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+/* --- Dark Mode Theme --- */
+body.dark-mode {
+    --bg-light: #121212;
+    --surface-white: #1E1E1E;
+    --text-main: #E0E0E0;
+    --text-muted: #B0BEC5;
+    --border-color: #333;
+    --surface-glass: rgba(30, 30, 30, 0.9);
+}
+
+body.dark-mode .card,
+body.dark-mode header,
+body.dark-mode .auth-card {
+    background: var(--surface-white);
+    border-color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .input-wrapper input,
+body.dark-mode .input-group input,
+body.dark-mode .input-group select {
+    background: #2C2C2C;
+    border-color: #424242;
+    color: #FFF;
+}
+
+body.dark-mode .result-box {
+    background: #263238;
+    /* Dark Blue Grey */
+    border-left-color: var(--primary-light);
+}
+
+body.dark-mode th {
+    background: #263238;
+    color: #E0E0E0;
+}
+
+body.dark-mode td {
+    border-bottom-color: #333;
+}
+
+body.dark-mode .crop-card {
+    background: #2C2C2C;
+    border-color: #424242;
+}
+
+body.dark-mode .crop-card:hover,
+body.dark-mode .crop-card.selected {
+    background: #37474F;
+    border-color: var(--primary-light);
+}
+
+/* Settings Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.settings-modal {
+    background: var(--surface-white);
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.active .settings-modal {
+    transform: scale(1);
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
