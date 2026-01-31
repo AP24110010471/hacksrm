@@ -4,192 +4,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geo-Intelligent Advisory</title>
+    <title>Dashboard - Geo-Intelligent Advisory</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
-    <!-- Live Background Layer -->
-    <div class="live-bg"></div>
 
     <div class="container">
+        <!-- Modern Header -->
         <header>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <h1>🌱 Geo-Intelligent Advisory</h1>
-                    <p>Welcome, <strong>{{ user }}</strong>!</p>
-                </div>
-                <a href="/logout" class="btn-primary"
-                    style="background:#e74c3c; text-decoration:none; font-size:0.9rem;">Logout</a>
+            <div class="brand-area">
+                <h1><span style="font-size:1.5em">🌱</span> AgriSmart</h1>
+                <p>Intelligent Farming Assistant</p>
             </div>
-            <p style="text-align:center; color:#555;">Smart Farming Decisions based on Local Soil & Climate Data</p>
+
+            <div class="user-actions" style="display:flex; align-items:center; gap:1.5rem;">
+                <div style="text-align:right;">
+                    <strong style="display:block; color:var(--text-main);">{{ user }}</strong>
+                    <span style="font-size:0.8rem; color:var(--text-muted);">Farmer ID</span>
+                </div>
+                <a href="/logout" class="btn-secondary" style="color:#d32f2f; border-color:#ffcdd2;">
+                    <ion-icon name="log-out-outline" style="vertical-align:middle;"></ion-icon> Logout
+                </a>
+            </div>
         </header>
 
-        <main>
-            <!-- Step 1: Location -->
-            <section id="step1" class="card">
-                <h2>1. Identify Location</h2>
+        <main class="dashboard-grid">
+
+            <!-- Step 1: Location & Weather Widget -->
+            <section id="step1" class="card" style="grid-column: span 1;">
+                <h2><ion-icon name="location-outline"></ion-icon> 1. Location</h2>
                 <div class="input-group">
-                    <div style="flex: 1;">
-                        <label>State & District:</label>
-                        <input type="text" id="districtInput" placeholder="District (e.g. Guntur, Warangal)">
+                    <div>
+                        <label>District</label>
+                        <select id="districtInput">
+                            <option value="">Select District</option>
+                            <option value="Guntur">Guntur</option>
+                            <option value="Warangal">Warangal</option>
+                            <option value="Krishna">Krishna</option>
+                            <option value="East Godavari">East Godavari</option>
+                            <option value="Nalgonda">Nalgonda</option>
+                        </select>
                     </div>
-                    <div style="flex: 1;">
-                        <label>Village Name (Optional):</label>
-                        <input type="text" id="villageInput" placeholder="Village (e.g. Mangalagiri, Uppal)">
+                    <div>
+                        <label>Village (Optional)</label>
+                        <input type="text" id="villageInput" placeholder="Ex: Mangalagiri">
                     </div>
-                    <button onclick="analyzeLocation()" class="btn-primary">Analyze Location</button>
+                    <button onclick="analyzeLocation()" class="btn-primary full-width">
+                        Analyze Location
+                    </button>
                     <p id="locationError" class="error-msg"></p>
                 </div>
-                <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">
-                    <em>Supported Villages: Mangalagiri, Uppal, Araku Valley, Kazipet, Bhimavaram, etc.</em>
-                </p>
-                <div id="locationResult" class="result-box hidden">
-                    <!-- Live Weather Widget -->
-                    <div class="weather-card">
-                        <div class="weather-icon">🌦️</div>
-                        <div style="flex: 1;">
-                            <h3 style="margin:0">Live Weather</h3>
-                            <div style="display:flex; justify-content:space-between; align-items:flex-end;">
-                                <div>
-                                    <span id="tempDisplay" style="font-size: 2rem; font-weight: bold;">--°C</span>
-                                    <div id="weatherCondition" style="color: #555; font-weight: 600;">--</div>
-                                </div>
-                                <div style="text-align: right; font-size: 0.85rem; color: #666;">
-                                    <div>Humidity: <span id="humidityDisplay">--</span>%</div>
-                                    <div>Wind: <span id="windDisplay">--</span> km/h</div>
-                                </div>
+
+                <div id="locationResult" class="hidden" style="margin-top:1.5rem;">
+                    <!-- Weather Widget Style -->
+                    <div class="weather-widget">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <h1 id="tempDisplay" style="margin:0; font-size:2.5rem;">--°C</h1>
+                                <p id="weatherCondition" style="margin:0;">Loading...</p>
                             </div>
+                            <div style="font-size:3rem;">🌥️</div>
+                        </div>
+                        <div
+                            style="margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.2); display:flex; justify-content:space-between;">
+                            <span>💧 <span id="humidityDisplay">--%</span></span>
+                            <span>💨 <span id="windDisplay">-- km/h</span></span>
                         </div>
                     </div>
 
-                    <hr>
-                    <p><strong>Detected Location:</strong> <span id="detectedLoc"></span></p>
-                    <p><strong>Soil Type:</strong> <span id="soilType"></span></p>
-                    <p><strong>Agro-Climatic Zone:</strong> <span id="climateZone"></span></p>
-                </div>
-            </section>
-
-            <!-- Step 2: Crop Recommendation -->
-            <section id="step2" class="card hidden">
-                <h2>2. Crop Intelligence</h2>
-                <div class="input-group">
-                    <label>Select Season:</label>
-                    <select id="seasonInput">
-                        <option value="Kharif">Kharif (Monsoon)</option>
-                        <option value="Rabi">Rabi (Winter)</option>
-                        <option value="Zaid">Zaid (Summer)</option>
-                    </select>
-                    <button onclick="recommendCrops()" class="btn-primary">Find Suitable Crops</button>
-                </div>
-                <div id="cropResult" class="result-grid hidden">
-                    <!-- Crops will be injected here -->
-                </div>
-            </section>
-
-            <!-- Live Market Rate Section -->
-            <section id="marketSection" class="card hidden" style="border-left: 4px solid #27ae60;">
-                <h2>💵 Live Market Rates</h2>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <p style="margin:0;">Current Price for <strong id="priceCropName"></strong></p>
-                        <small id="marketLoc">at -- APMC</small>
-                    </div>
-                    <div style="text-align: right;">
-                        <span id="priceValue" style="font-size: 1.5rem; font-weight: bold; color: #27ae60;">₹ --</span>
-                        <div id="priceTrend" style="font-size: 0.8srem; font-weight: bold;">--</div>
+                    <div class="result-box">
+                        <p><strong>📍 Detected:</strong> <span id="detectedLoc">--</span></p>
+                        <p><strong>🟤 Soil:</strong> <span id="soilType">--</span></p>
+                        <p><strong>🌍 Zone:</strong> <span id="climateZone">--</span></p>
                     </div>
                 </div>
             </section>
 
-            <!-- Step 3: Yield Calculator -->
-            <section id="step3a" class="card hidden" style="border-left: 4px solid #f1c40f;">
-                <h2>3a. Yield Estimator</h2>
-                <p>Estimate production for <strong id="yieldCropName"></strong></p>
-                <div class="input-group">
-                    <label>Area (Acres):</label>
-                    <input type="number" id="yieldArea" value="1" onchange="calculateYield()">
-                    <button onclick="calculateYield()" class="btn-primary" style="background-color: #f39c12;">Estimate
-                        Yield</button>
+            <!-- Step 2: Crop Intelligence Center -->
+            <section id="step2" class="card hidden" style="grid-column: span 2;">
+                <h2><ion-icon name="leaf-outline"></ion-icon> 2. Smart Crop Recommendation</h2>
+                <div style="display:flex; gap:1rem; align-items:flex-end; margin-bottom:1.5rem;">
+                    <div style="flex:1;">
+                        <label>Select Season</label>
+                        <select id="seasonInput">
+                            <option value="Kharif">Kharif (Monsoon)</option>
+                            <option value="Rabi">Rabi (Winter)</option>
+                            <option value="Zaid">Zaid (Summer)</option>
+                        </select>
+                    </div>
+                    <button onclick="recommendCrops()" class="btn-primary" style="flex:2;">Find Best Crops</button>
                 </div>
-                <div id="yieldResult" class="hidden" style="margin-top: 15px; font-weight: bold; color: #d35400;">
-                    Expected Yield: <span id="yieldValue"></span>
+
+                <div id="cropResult" class="crop-grid hidden">
+                    <!-- Dynamic Crops -->
                 </div>
             </section>
 
-            <!-- Step 3b: Resource Calculator -->
-            <section id="step3" class="card hidden">
-                <h2>3b. Resource Calculator</h2>
-                <div class="input-group">
-                    <p>Selected Crop: <strong id="selectedCropName"></strong></p>
-                    <label>Land Area (Acres):</label>
-                    <input type="number" id="areaInput" value="1" min="0.1" step="0.1">
-                    <button onclick="calculateResources()" class="btn-primary">Calculate Resources</button>
+            <!-- Live Market Widget -->
+            <section id="marketSection" class="card hidden" style="background:#E8F5E9; border-color:#C8E6C9;">
+                <h2><ion-icon name="trending-up-outline"></ion-icon> Market Pulse</h2>
+                <div>
+                    <p style="margin:0; color:var(--text-muted);">Current Price for <strong
+                            id="priceCropName">--</strong></p>
+                    <h1 id="priceValue" style="margin:0.5rem 0; color:var(--primary-dark);">₹ --</h1>
+                    <div id="priceTrend" style="font-weight:600; color:#F9A825;">--</div>
+                    <small id="marketLoc">Updated just now</small>
                 </div>
-                <div id="calcResult" class="result-box hidden">
-                    <h3>📦 Resource Plan</h3>
-                    <!-- Resource Output Container -->
-                    <div id="resourceOutput"></div>
+            </section>
 
-                    <h4>📅 Application Schedule</h4>
-                    <!-- Schedule Output Container -->
-                    <div id="scheduleOutput"></div>
+            <!-- Step 3: Calculator & Planner -->
+            <section id="step3" class="card hidden" style="grid-column: span 3;">
+                <div style="display:flex; gap:2rem; flex-wrap:wrap;">
 
-                    <!-- Disease Alert Box -->
-                    <div id="diseaseBox" class="disease-alert hidden">
-                        <h4>⚠️ Disease Watch: <span id="diseaseName"></span></h4>
-                        <p><strong>Risk:</strong> <span id="diseaseRisk"></span></p>
-                        <p><strong>Remedy:</strong> <span id="diseaseRemedy"></span></p>
+                    <!-- Left: Inputs -->
+                    <div style="flex:1; min-width:300px;">
+                        <h2><ion-icon name="calculator-outline"></ion-icon> 3. Planner & Yield</h2>
+                        <div class="result-box" style="margin-top:0; margin-bottom:1.5rem;">
+                            <p>Plan for: <strong id="selectedCropName" style="font-size:1.2rem;">--</strong></p>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Land Area (Acres)</label>
+                            <input type="number" id="areaInput" value="1" min="0.1" step="0.1"
+                                onchange="calculateYield()">
+                        </div>
+
+                        <div style="display:flex; gap:1rem; margin-top:1rem;">
+                            <button onclick="calculateYield()" class="btn-secondary" style="flex:1;">Est. Yield</button>
+                            <button onclick="calculateResources()" class="btn-primary" style="flex:1;">Get
+                                Resources</button>
+                        </div>
+
+                        <div id="yieldResult" class="hidden"
+                            style="margin-top: 1rem; padding:1rem; background:#FFF3E0; border-radius:8px; color:#E65100; font-weight:bold; text-align:center;">
+                            Expected Yield: <span id="yieldValue"></span>
+                        </div>
                     </div>
 
-                    <div class="ai-box">
-                        <h4>🤖 AI Explanation</h4>
-                        <p id="aiExplanation"></p>
+                    <!-- Right: Results -->
+                    <div id="calcResult" class="hidden"
+                        style="flex:2; min-width:300px; border-left:1px solid #EEE; padding-left:2rem;">
+                        <h3>📦 Resource Plan</h3>
+                        <div id="resourceOutput"
+                            style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.5rem;"></div>
+
+                        <h3>📅 Schedule</h3>
+                        <div id="scheduleOutput"></div>
+
+                        <!-- AI Insight -->
+                        <div class="ai-box"
+                            style="background:#E3F2FD; padding:1rem; border-radius:8px; margin-top:1.5rem; display:flex; gap:1rem;">
+                            <div style="font-size:2rem;">🤖</div>
+                            <div>
+                                <h4 style="margin:0 0 0.5rem 0; color:#1565C0;">AI Insight</h4>
+                                <p id="aiExplanation" style="margin:0; font-size:0.9rem; color:#0D47A1;"></p>
+                            </div>
+                        </div>
+
+                        <button onclick="addToHistory()" class="btn-primary full-width"
+                            style="margin-top:1rem; background:#5E35B1;">
+                            <ion-icon name="save-outline"></ion-icon> Save Plan
+                        </button>
                     </div>
 
-                    <!-- Add to History Button -->
-                    <button onclick="addToHistory()" style="background:#5e35b1; margin-top:10px;" class="btn-primary">💾
-                        Save this Plan to History</button>
                 </div>
             </section>
 
-            <!-- Step 4: Crop Disease Intelligence -->
-            <section id="diseaseSection" class="card" style="border-left: 4px solid #e74c3c;">
-                <h2>🩺 Crop Doctor (Disease Intelligence)</h2>
-                <div class="input-group">
-                    <p>Analyze potential infection risks for <strong id="diagnosisCropName">--</strong> based on current
-                        weather.</p>
-                    <button onclick="runDiseaseDiagnosis()" class="btn-primary"
-                        style="background-color: #e74c3c;">Analyze Risk</button>
-                    <!-- Visualizer Placeholder -->
-                    <div id="diseaseVisualizer" class="hidden" style="margin-top:15px; text-align:center;"></div>
-                </div>
+            <!-- Disease & History row -->
+            <section id="diseaseSection" class="card" style="grid-column: span 1;">
+                <h2><ion-icon name="medkit-outline"></ion-icon> Crop Doctor</h2>
+                <p style="font-size:0.9rem;">Check <strong id="diagnosisCropName">Selected Crop</strong> for risks.</p>
+                <button onclick="runDiseaseDiagnosis()" class="btn-secondary full-width"
+                    style="color:#d32f2f; border-color:#ef9a9a;">
+                    Analyze Risk
+                </button>
+                <div id="diseaseVisualizer" class="hidden" style="margin-top:1rem;"></div>
             </section>
 
-            <!-- Step 5: Farming History -->
-            <section id="historySection" class="card">
-                <h2>📜 Farming Journey (History)</h2>
+            <section id="historySection" class="card" style="grid-column: span 2;">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h2><ion-icon name="time-outline"></ion-icon> History</h2>
+                    <button onclick="loadHistory()" class="btn-secondary"
+                        style="padding:0.4rem 0.8rem; font-size:0.8rem;">Refresh</button>
+                </div>
                 <div class="table-container">
                     <table id="historyTable">
                         <thead>
                             <tr>
                                 <th>Date</th>
                                 <th>Crop</th>
-                                <th>Location</th>
-                                <th>Yield Est.</th>
+                                <th>Loc</th>
+                                <th>Yield</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!-- History Rows -->
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
-                <button onclick="loadHistory()" class="btn-secondary" style="margin-top:10px;">Refresh History</button>
             </section>
+
         </main>
     </div>
+
     <script src="/static/script.js"></script>
+    <script>
+        // Simple View Helper for Grid Span management
+        function adjustGrid() {
+            // Optional JS for advanced responsiveness if CSS Grid isn't enough
+        }
+    </script>
 </body>
 
 </html>
