@@ -225,7 +225,18 @@ async function calculateResources() {
             </div>
         `).join('');
 
-        document.getElementById('aiExplanation').textContent = data.explanation;
+        // Render AI Explanation with basic Markdown parsing
+        let explanation = data.explanation;
+        if (explanation) {
+            // Convert **bold** to <b>bold</b>
+            explanation = explanation.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+            // Convert newline to <br>
+            explanation = explanation.replace(/\n/g, '<br>');
+        } else {
+            explanation = "AI analysis is currently unavailable for this specific crop configuration.";
+        }
+
+        document.getElementById('aiExplanation').innerHTML = explanation;
 
         // Check Disease Risk
         checkDiseaseRisk(currentCropName);
