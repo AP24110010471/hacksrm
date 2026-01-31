@@ -25,10 +25,10 @@
 
             <!-- Navigation Menu -->
             <nav class="nav-links">
-                <a href="#" class="nav-item active">
+                <a href="#" onclick="showHome()" id="nav-home" class="nav-item active">
                     <ion-icon name="home-outline"></ion-icon> <span data-i18n="home">Home</span>
                 </a>
-                <a href="#step1" class="nav-item">
+                <a href="#" onclick="showDashboard()" id="nav-dashboard" class="nav-item">
                     <ion-icon name="grid-outline"></ion-icon> <span data-i18n="dashboard">Dashboard</span>
                 </a>
                 <span onclick="toggleSettings()" class="nav-item">
@@ -235,31 +235,34 @@
         </main>
     </div>
 
-    <!-- Settings Modal -->
-    <div class="modal-overlay" id="settingsModal" onclick="closeSettings(event)">
-        <div class="settings-modal" onclick="event.stopPropagation()">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-                <h2 style="margin:0;" data-i18n="settings">Settings</h2>
-                <button onclick="toggleSettings()"
-                    style="border:none; background:transparent; font-size:1.5rem; cursor:pointer;">&times;</button>
-            </div>
+    <!-- Settings Sidebar -->
+    <div class="settings-backdrop" id="settingsBackdrop" onclick="closeSettings()"></div>
+    <div class="settings-sidebar" id="settingsSidebar">
+        <div class="settings-header">
+            <h2 data-i18n="settings">Settings</h2>
+            <button onclick="toggleSettings()"
+                style="border:none; background:transparent; font-size:1.5rem; cursor:pointer; color:var(--text-muted);">&times;</button>
+        </div>
 
-            <div class="setting-item">
-                <span data-i18n="theme">Theme</span>
-                <button onclick="toggleTheme()" id="themeBtn" class="btn-secondary">
-                    <ion-icon name="moon-outline"></ion-icon> <span data-i18n="dark_mode">Dark Mode</span>
-                </button>
-            </div>
+        <div class="setting-item">
+            <span data-i18n="theme">Theme</span>
+            <button onclick="toggleTheme()" id="themeBtn" class="btn-secondary">
+                <ion-icon name="moon-outline"></ion-icon> <span data-i18n="dark_mode">Dark Mode</span>
+            </button>
+        </div>
 
-            <div class="setting-item">
-                <span data-i18n="language">Language</span>
-                <select id="languageSelect" onchange="changeLanguage(this.value)"
-                    style="padding:0.5rem; border-radius:6px; border:1px solid #ddd;">
-                    <option value="en">English</option>
-                    <option value="hi">हिंदी (Hindi)</option>
-                    <option value="te">తెలుగు (Telugu)</option>
-                </select>
-            </div>
+        <div class="setting-item">
+            <span data-i18n="language">Language</span>
+            <select id="languageSelect" onchange="changeLanguage(this.value)"
+                style="padding:0.5rem; border-radius:6px; border:1px solid #ddd;">
+                <option value="en">English</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="te">తెలుగు (Telugu)</option>
+            </select>
+        </div>
+
+        <div style="margin-top:auto; font-size:0.8rem; color:var(--text-muted); text-align:center;">
+            AgriSmart Version 2.0
         </div>
     </div>
 

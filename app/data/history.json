@@ -13,6 +13,20 @@
       "district": "Guntur",
       "yield_est": "",
       "year": "2025"
+    },
+    {
+      "date": "2026-01-31",
+      "crop": "Cotton",
+      "district": "Guntur",
+      "yield_est": "",
+      "year": "2025"
+    },
+    {
+      "date": "2026-01-31",
+      "crop": "Cotton",
+      "district": "Guntur",
+      "yield_est": "14.4 Quintals (High Yield (Excellent Soil Match))",
+      "year": "2025"
     }
   ]
 }

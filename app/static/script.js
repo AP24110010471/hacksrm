@@ -47,7 +47,11 @@ async function analyzeLocation() {
         }
 
         resultEl.classList.remove('hidden');
-        document.getElementById('step2').classList.remove('hidden');
+
+        // Only show Step 2 if in Dashboard mode
+        if (document.getElementById('nav-dashboard').classList.contains('active')) {
+            document.getElementById('step2').classList.remove('hidden');
+        }
     } catch (e) {
         errorEl.textContent = e.message;
     }
@@ -152,7 +156,7 @@ async function fetchMarketPrice(cropName) {
 
 async function calculateYield() {
     if (!currentCropName || !currentLocData) return;
-    const area = document.getElementById('yieldArea').value;
+    const area = document.getElementById('areaInput').value;
 
     const response = await fetch('/calculate-yield', {
         method: 'POST',
@@ -388,17 +392,63 @@ async function runDiseaseDiagnosis() {
     }
 }
 
+// --- View Management ---
+
+function showHome() {
+    // Nav State
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    document.getElementById('nav-home').classList.add('active');
+
+    // Section Visibility
+    // Home only shows Step 1 (Location/Weather)
+    document.getElementById('step1').classList.remove('hidden');
+
+    // Hide everything else
+    document.getElementById('step2').classList.add('hidden');
+    document.getElementById('marketSection').classList.add('hidden');
+    document.getElementById('step3').classList.add('hidden');
+    document.getElementById('diseaseSection').classList.add('hidden');
+    document.getElementById('historySection').classList.add('hidden');
+}
+
+function showDashboard() {
+    // Nav State
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    document.getElementById('nav-dashboard').classList.add('active');
+
+    // Show all sections that have data or are available
+    // Always show Step 1
+    document.getElementById('step1').classList.remove('hidden');
+
+    // If we have location data, show Step 2
+    if (currentLocData) {
+        document.getElementById('step2').classList.remove('hidden');
+    }
+
+    // If we have a selected crop, show market and step 3
+    if (currentCropName) {
+        document.getElementById('marketSection').classList.remove('hidden');
+        document.getElementById('step3').classList.remove('hidden');
+        document.getElementById('diseaseSection').classList.remove('hidden');
+    }
+
+    // Always show history in dashboard
+    document.getElementById('historySection').classList.remove('hidden');
+}
+
 // --- Settings & UI Logic ---
 
 function toggleSettings() {
-    const modal = document.getElementById('settingsModal');
-    modal.classList.toggle('active');
+    const sidebar = document.getElementById('settingsSidebar');
+    const backdrop = document.getElementById('settingsBackdrop');
+
+    sidebar.classList.toggle('active');
+    backdrop.classList.toggle('active');
 }
 
-function closeSettings(e) {
-    if (e.target.id === 'settingsModal') {
-        document.getElementById('settingsModal').classList.remove('active');
-    }
+function closeSettings() {
+    document.getElementById('settingsSidebar').classList.remove('active');
+    document.getElementById('settingsBackdrop').classList.remove('active');
 }
 
 function toggleTheme() {
@@ -464,6 +514,7 @@ function initTiltEffect() {
 document.addEventListener('DOMContentLoaded', () => {
     loadHistory();
     initTiltEffect();
+    showHome(); // Default to Home View
 
     // Load Saved Settings
     const savedTheme = localStorage.getItem('theme');

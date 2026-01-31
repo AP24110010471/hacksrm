@@ -3,6 +3,9 @@
 ## Overview
 This is a purely software-based, offline decision intelligence system for agriculture. It runs on a local Flask server and uses pre-loaded datasets to provide recommendations.
 
+## Live Demo
+🚀 **[Try it Live on Render](https://hacksrm.onrender.com)**
+
 ## Features
 - **Location Intelligence**: Maps districts/coordinates to soil and climate zones.
 - **Crop Recommendation**: Suggests crops based on soil, season, and climate.
