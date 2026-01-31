@@ -109,9 +109,7 @@ async function selectCrop(cropName, cardElement) {
 
     document.getElementById('selectedCropName').textContent = cropName;
 
-    // Update Yield Section
-    document.getElementById('yieldCropName').textContent = cropName;
-    document.getElementById('step3a').classList.remove('hidden');
+
     document.getElementById('yieldResult').classList.add('hidden');
 
     // Update Market Section
