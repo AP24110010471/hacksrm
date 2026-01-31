@@ -174,7 +174,15 @@ async function calculateYield() {
 }
 
 async function calculateResources() {
-    if (!currentCropName || !currentLocData) return;
+    if (!currentCropName || !currentLocData) {
+        alert("Please select a location and crop first.");
+        return;
+    }
+
+    const btn = document.querySelector('button[onclick="calculateResources()"]');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<ion-icon name="sync-outline" class="spin"></ion-icon> Calculating...';
+    btn.disabled = true;
 
     const area = document.getElementById('areaInput').value;
     const resultBox = document.getElementById('calcResult');
@@ -251,6 +259,9 @@ async function calculateResources() {
     } catch (e) {
         console.error(e);
         alert("Error: " + e.message);
+    } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
     }
 }
 
