@@ -51,3 +51,26 @@ Below is a summary of the key prompts and instructions used to evolve the AgriSm
 7.  **Final Polish**
     > "remove 3D effect" (Flatten UI).
     > "make a folder of Prompt Documentation" (Create this document).
+8.  **Image Generation Prompts (Wallpapers)**
+    The following prompts were used to generate the high-quality background assets:
+
+    *   **Cinematic Green Field**:
+        > "A beautiful, cinematic shot of a lush green agricultural farm field under a bright blue sky with soft sunlight. High quality, realistic, photorealistic, wide angle, vibrant colors."
+
+    *   **Golden Wheat (Drone View)**:
+        > "A wide-angle cinematic drone shot of a golden wheat field at golden hour, gently rolling hills, lens flare, hyper-realistic, 8k resolution, suitable for a background wallpaper."
+
+    *   **Light & Airy Landscape**:
+        > "Bright airy agricultural landscape, vast green fields, soft morning mist, high key photography, pastel colors, soft sunlight, minimalist, ethereal, 8k resolution, suitable for bright UI background."
+
+    *   **Wheat Macro Closeup**:
+        > "Extreme close-up macro shot of golden wheat stalks with morning dew drops, sun rays filtering through, highly detailed, photorealistic, 8k, depth of field, warm golden tones."
+
+    *   **Hi-Tech Tractor**:
+        > "Modern green autonomous tractor working in a vast field at sunset, futuristic agriculture, dramatic lighting, sharp focus, high definition, cinematic angle."
+
+    *   **Rice Terraces**:
+        > "Breathtaking view of lush green terraced rice fields on a misty mountain slope, soft morning light, peaceful nature, hyper-realistic, 8k, landscape photography."
+
+    *   **Sunflower Field**:
+        > "A endless field of blooming sunflowers under a bright blue sky with fluffy white clouds, vibrant yellow and green colors, scenic, nature photography, 8k resolution."
